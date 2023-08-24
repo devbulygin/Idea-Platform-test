@@ -18,8 +18,10 @@
 # Вызов приложения
 
 ```
-make build-run
+make run
 ```
+# Демонстрация работы
+[![asciicast](https://asciinema.org/a/nrzwdw0xV9y61hHoDqRwld5LQ.png)](https://asciinema.org/a/nrzwdw0xV9y61hHoDqRwld5LQ)
 
 
 
