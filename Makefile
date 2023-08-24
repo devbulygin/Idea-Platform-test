@@ -1,19 +1,20 @@
-#.DEFAULT_GOAL := build-run
+GRADLEW = ./gradlew
+JAR_FILE = build/libs/Idea-Platform-test-1.0-SNAPSHOT.jar
+default: run
 
 clean:
-	gradle clean
+	./gradlew clean
 
 build:
-	gradle build
+	./gradlew build
+
+clean-build: clean build
 
 install:
 	./gradlew clean install
 
-run-dist:
-	./build/install/java-package/bin/java-package
-
 run:
-	gradle :run
+	./gradlew run
 
 test:
 	./gradlew test

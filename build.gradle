@@ -8,6 +8,11 @@ plugins {
 group = 'ru.devbulygin'
 version = '1.0-SNAPSHOT'
 
+jar {
+    manifest {
+        attributes 'Main-Class': 'ru.devbulygin.Main'
+    }
+}
 
 application { mainClass = "ru.devbulygin.Main" }
 
@@ -21,12 +26,9 @@ configurations {
     }
 }
 
-
-
 compileJava {
-    options.release = 20
+    options.release = 17
 }
-
 
 dependencies {
 
@@ -64,8 +66,3 @@ jacocoTestReport {
     }
 }
 
-
-
-//tasks.withType(JavaExec) {
-//    jvmArgs = ['--release', '20']
-//}
