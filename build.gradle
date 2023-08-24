@@ -1,23 +1,69 @@
 plugins {
     id 'java'
+    id 'application'
+    id 'checkstyle'
+    id 'jacoco'
 }
 
 group = 'ru.devbulygin'
 version = '1.0-SNAPSHOT'
 
+
+application { mainClass = "ru.devbulygin.Main" }
+
 repositories {
     mavenCentral()
 }
 
-compileJava {
-    options.release = 19
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
+//java {
+//    sourceCompatibility = JavaVersion.VERSION_19
+//    targetCompatibility = JavaVersion.VERSION_19
+//}
+
+compileJava {
+    options.release = 20
+}
+
+
 dependencies {
+
+//    Test
+
     testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation("org.assertj:assertj-core:3.22.0")
     testImplementation 'org.junit.jupiter:junit-jupiter'
+
+//    Deserialize json
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+//    Lombok
+
+    compileOnly 'org.projectlombok:lombok:1.18.28'
+    annotationProcessor 'org.projectlombok:lombok:1.18.28'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.28'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.28'
+
 }
 
 test {
     useJUnitPlatform()
 }
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+}
+
+//tasks.withType(JavaExec) {
+//    jvmArgs = ['--release', '20']
+//}
