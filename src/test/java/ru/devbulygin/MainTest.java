@@ -2,7 +2,7 @@ package ru.devbulygin;
 
 import org.junit.jupiter.api.Test;
 import ru.devbulygin.dto.Ticket;
-import ru.devbulygin.service.FlightTimeCalculator;
+import ru.devbulygin.service.Calculator;
 import ru.devbulygin.service.Parser;
 
 import java.nio.file.Paths;
@@ -12,13 +12,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class MainTest {
 
-    private static final String EXPECTED_MINIMAL_FLIGHT_TIME =
+    private static final String RESULT =
             "Минимальное время полета между городами Владивосток и Тель-Авив "
             + "для авиаперевозчика SU cоставляет 13 ч 0 мин. \n"
             + "Минимальное время полета между городами Владивосток и Тель-Авив "
             + "для авиаперевозчика S7 cоставляет 13 ч 30 мин. \n"
             + "Минимальное время полета между городами Владивосток и Тель-Авив "
-            + "для авиаперевозчика TK cоставляет 13 ч 10 мин. \n";
+            + "для авиаперевозчика TK cоставляет 13 ч 10 мин. \n"
+            + "\n"
+            + "Разница между средней ценой и медианой для полета между городами Владивосток и Тель-Авив - 200.0";
 
 
     public static List<Ticket> getExpectedTickets() {
@@ -55,9 +57,9 @@ class MainTest {
     }
 
     @Test
-    void calculateMinimumFlightTime() {
-        assertThat(FlightTimeCalculator.getMinimalFlyTimeForEveryoneCarrier(getExpectedTickets()))
-                .isEqualTo(EXPECTED_MINIMAL_FLIGHT_TIME);
+    void resultTest() {
+        assertThat(Calculator.getResult(getExpectedTickets()))
+                .isEqualTo(RESULT);
 
     }
 }

@@ -11,23 +11,22 @@ package ru.devbulygin;
 
 import ru.devbulygin.dto.Ticket;
 import lombok.SneakyThrows;
-import ru.devbulygin.service.FlightTimeCalculator;
+import ru.devbulygin.service.Calculator;
 import ru.devbulygin.service.Parser;
 
 import java.util.List;
 
 
 public class Main {
-    public static final String PATH = "src/test/resources/tickets.json";
+    public static final String PATH = "src/main/resources/tickets.json";
     @SneakyThrows
     public static void main(String[] args) {
 
         String json = Parser.readJson(PATH);
-        System.out.println(json);
 
         List<Ticket> tickets = Parser.jsonToTickets(json);
 
-        System.out.println(FlightTimeCalculator.getMinimalFlyTimeForEveryoneCarrier(tickets));
+        System.out.println(Calculator.getResult(tickets));
 
     }
 }

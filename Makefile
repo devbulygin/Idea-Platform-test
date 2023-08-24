@@ -15,7 +15,6 @@ run-dist:
 run:
 	gradle :run
 
-
 test:
 	./gradlew test
 
@@ -29,6 +28,6 @@ update-deps:
 	./gradlew useLatestVersions
 
 
-#build-run: clean build run
+build-run: clean build run
 
 .PHONY: build
